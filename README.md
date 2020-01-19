@@ -3,7 +3,7 @@
 
 ## Cadence Simulations:
 
-This project consideres the following simulations which are available for download from [zenodo.org](zenodo.org).
+This project considers the following simulations which are available for download from [zenodo.org](zenodo.org).
 
 | Cadence           | Data DOI                               |
 | ----------------- | -------------------------------------- |
@@ -53,7 +53,7 @@ tar --to-command='tar -xzvf -' -xzvf file_to_decompress.tar.gz
 
 #### Step 3: Specify Data Location in Environment
 
-The path of the downloaded data needs to be specified in the project environment so that the software knows where to find the simulated light-curves. This can be acomplished by replacing `/desired/output/directory/` in the below script:
+The path of the downloaded data needs to be specified in the project environment so that the software knows where to find the simulated light-curves. This can be accomplished by replacing `/desired/output/directory/` in the below script:
 
 ```bash
 # Instantiate the new environment
