@@ -12,15 +12,15 @@ Usage Example
 -------------
 
 >>> from pathlib import Path
-
+>>>
 >>> from snmachine import example_data, snclassifier, snfeatures
 >>> from snmachine.sndata import Dataset
-
+>>>
 >>> from sample_features import extract_features
-
+>>>
 >>> data_dir = Path(example_data) / 'SPCC_SUBSET'
 >>> snm_data = Dataset(str(data_dir) + '/')
-
+>>>
 >>> waveFeats = snfeatures.WaveletFeatures()
 >>> wave_features = extract_features(waveFeats, snm_data, './cache', nprocesses=4)
 >>> wave_features
@@ -64,6 +64,17 @@ def _create_cache_dirs(parent):
 
 
 def get_cache_prefix(data, method, **kwargs):
+    """Determine the file name prefix for a cached file
+
+    Args:
+        data (Dataset): Directory of dataset to extract features for
+        method (str): The method used to identify features
+        All method specific kwargs used when calling ``extract_features``
+
+    Returns:
+         The file prefix as a sting
+    """
+
     ignore_kwargs = (
         'save_chains',
         'chain_directory',
