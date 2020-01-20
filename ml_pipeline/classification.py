@@ -63,7 +63,7 @@ def _create_cache_dirs(parent):
     return cache_dirs
 
 
-def get_cache_prefix(data, method, **kwargs):
+def create_cache_prefix(data, method, **kwargs):
     """Determine the file name prefix for a cached file
 
     Args:
@@ -122,7 +122,7 @@ def extract_features(
 
     # Define paths of cached results
     file_prefix = file_prefix if file_prefix else \
-        get_cache_prefix(data, method, **kwargs)
+        create_cache_prefix(data, method, **kwargs)
 
     features_dir, _ = _create_cache_dirs(cache_dir)
     features_path = features_dir / f'{file_prefix}_features.ecsv'
