@@ -7,23 +7,6 @@ Extracted features are cached to file in ecsv format. Cached files are
 prefixed with the string  ``{survey name}_{feature method}_{kwarg hash}``
 where the last value represents the hash of the keyword arguments. Actual
 keyword arguments are included as metadata in the cached file.
-
-Usage Example
--------------
-
->>> from pathlib import Path
->>>
->>> from snmachine import example_data, snclassifier, snfeatures
->>> from snmachine.sndata import Dataset
->>>
->>> from sample_features import extract_features
->>>
->>> data_dir = Path(example_data) / 'SPCC_SUBSET'
->>> snm_data = Dataset(str(data_dir) + '/')
->>>
->>> waveFeats = snfeatures.WaveletFeatures()
->>> wave_features = extract_features(waveFeats, snm_data, './cache', nprocesses=4)
->>> wave_features
 """
 
 import warnings
