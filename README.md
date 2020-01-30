@@ -4,7 +4,7 @@
 
 ## Installation and Setup
 
-#### Step 1: Install Dependancies
+#### Step 1: Install Dependencies
 
 Python dependencies can be installed for this project using the included `environment.yml` file. To download this repository and setup the environment, run:
 
@@ -23,13 +23,17 @@ The `ml-cadence` environment can then be entered and exited as necessary using t
 
 #### Step 2: Download Simulated Light-Curves
 
-Please note that the downloaded data will take up a several hundred Gb of storage. To avoid future headaches, choose where you will save the downloaded data with care. 
+Please note that the downloaded data will take up a several hundred GB of storage. To avoid future headaches, choose where you will save the downloaded data with care. 
 
-The simulated light-curves can be downloaded automatically using `wget` and the `file_list.txt` file from this repository. To avoid having to restart a potential failed download from scratch, use the `continue` argument. The  `timeout` and `tries` arguments can also be used to indefinatly retry a failed download.
+
+
+The simulated light-curves can be downloaded automatically using `wget` and the `file_list.txt` file from this repository. For convenience, the  `timeout` and `tries` arguments can be used to indefinitely retry a failed download and the  `continue` flag can be included to avoid restarting a failed download from scratch.
 
 ```bash
 wget --continue --timeout 0 --tries 0 -i file_list.txt -P /desired/output/directory/
 ```
+
+
 
 The downloaded files will be nested, compressed files using a mix of the `.gz` and `.tar.gz` formats. You can decompress them using the following commands:
 
@@ -42,7 +46,7 @@ gunzip file_to_decompress/*/*.gz --verbose
 
 #### Step 3: Specify Data Location in Environment
 
-The path of the downloaded data needs to be specified in the project environment so that the software knows where to find the simulated light-curves. This can be accomplished by replacing `/desired/output/directory/` in the below script:
+The path of the downloaded data needs to be specified in the project environment so that the software knows where to find the simulated light-curves. If you are using a `conda` environment (as suggested above), this can be accomplished by replacing `/desired/output/directory/` in the below script:
 
 ```bash
 # Instantiate the new environment
@@ -90,7 +94,35 @@ Simulated light-curves are divided into directories based on the model used in t
 
 
 
-Light-curves are saved using the `.fits` file format with each file containing information for multiple supernovae. Each of these files come in pairs: a header file postfixed with `HEAD.fits` and a photometry file postfixed with `PHOT.fits`. The header file provides metadata about the observed targets (e.g., `RA` and `Dec`). The photometry file contains the simulated light-curve. Definitions are provided below for a handful of columns in each file type:
+|Model Number    |  Model Name  |
+|:--:|:--:|
+|                  11       |  SNIa-normal |
+|                    2       |        SNCC-II  |
+|                    3       |       SNCC-Ibc  |
+|                   2       |        SNCC-II  |
+|                   3       |       SNCC-Ibc  |
+|                   2       |        SNCC-II  |
+|                  41       |      SNIa-91bg  |
+|                  43       |         SNIa-x  |
+|                  51       |             KN  |
+|                  60       |         SLSN-I  |
+|                  99       |           PISN  |
+|                  99       |           ILOT  |
+|                  99       |           CART  |
+|                  64       |            TDE  |
+|                  70       |            AGN  |
+|                  80       |        RRlyrae  |
+|                  81       |         Mdwarf  |
+|                  83       |            EBE  |
+|                  84       |           MIRA  |
+|                  99       |   uLens-Binary  |
+|                  91        |    uLens-Point  |
+|                  99       |   uLens-STRING  |
+|                  91        |    uLens-Point  |
+
+
+
+Light-curves are saved using the `SNANA` file format where files come in pairs: a header file postfixed with `HEAD.fits` and a photometry file postfixed with `PHOT.fits`. The header file provides meta-data about the observed targets (e.g., `RA` and `Dec`). The photometry file contains the simulated light-curve. Each file containing information for multiple supernovae. Definitions are provided below for a handful of columns in each file type:
 
 
 | Header File Column | Value Description                                            |
